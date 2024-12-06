@@ -7,6 +7,10 @@ android {
     namespace = "com.application.desafio_shopper"
     compileSdk = 34
 
+    viewBinding { 
+        enable = true
+    }
+
     defaultConfig {
         applicationId = "com.application.desafio_shopper"
         minSdk = 29
@@ -36,7 +40,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -45,4 +48,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //Add new dependencies
+    implementation(libs.koin.android)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.glide)
 }
