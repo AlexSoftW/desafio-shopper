@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:elevation="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/textview_tag_name_driver_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_value_name_driver_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="João Barros da Silva"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/textview_tag_money_driver_item"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_name_driver_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_name_driver_item" />
+
+        <TextView
+            android:id="@+id/textview_tag_vehicle_driver_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Veículo"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_name_driver_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_value_name_driver_item" />
+
+        <TextView
+            android:id="@+id/textview_value_vehicle_driver_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Honda Civic prata"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/textview_tag_money_driver_item"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_vehicle_driver_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_vehicle_driver_item" />
+
+        <TextView
+            android:id="@+id/textview_tag_description_driver_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Descrição"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_vehicle_driver_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_value_vehicle_driver_item" />
+
+        <TextView
+            android:id="@+id/textview_value_description_driver_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Lorem impsu.."
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/textview_tag_money_driver_item"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_description_driver_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_description_driver_item" />
+
+        <TextView
+            android:id="@+id/textview_tag_money_driver_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R$"
+            app:layout_constraintBottom_toBottomOf="@id/textview_value_money_driver_item"
+            app:layout_constraintEnd_toStartOf="@id/textview_value_money_driver_item"
+            app:layout_constraintTop_toTopOf="@+id/textview_value_money_driver_item" />
+
+        <TextView
+            android:id="@+id/textview_value_money_driver_item"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="20.00"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_tag_rating_driver_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Avaliação"
+            app:layout_constraintEnd_toEndOf="@id/textview_value_money_driver_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_value_money_driver_item" />
+
+        <TextView
+            android:id="@+id/textview_value_rating_driver_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 estrelas"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/textview_tag_rating_driver_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_rating_driver_item" />
+
+        <Button
+            android:id="@+id/button_driver_item"
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#24AE7C"
+            android:text="Escolher"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/textview_tag_rating_driver_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_value_rating_driver_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
