@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.replace
 import com.application.desafio_shopper.R
 import com.application.desafio_shopper.adapter.CarouselAdapter
 import com.application.desafio_shopper.databinding.RequestTripFragmentBinding
@@ -26,9 +27,13 @@ class RequestTripFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = RequestTripFragmentBinding.inflate(inflater, container, false)
+        setupView()
 
+        return binding.root
+    }
+
+    private fun setupView() {
         val items = listOf(
             CarouselItem(
                 R.drawable.background1,
@@ -48,7 +53,9 @@ class RequestTripFragment : Fragment() {
         binding.viewpagerRequestTrip.adapter = adapter
         startAutoScroll()
 
-        return binding.root
+        binding.buttonRequestTrip.setOnClickListener {
+            fragmentReplaceManager(ChooseTripFragment())
+        }
     }
 
     private fun startAutoScroll() {
@@ -65,8 +72,10 @@ class RequestTripFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        autoScrollJob?.cancel()
+    private fun fragmentReplaceManager(fragment: Fragment) {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

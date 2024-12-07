@@ -1,18 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginStart="18dp"
+    android:layout_marginEnd="18dp">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/textview_tag_start_address_choose_trip"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ESCOLHER MOTORISTA"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Ponto de partida:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_value_start_address_choose_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rua Teste dos Santos, Jardim Paulista, 1030"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/textview_tag_start_address_choose_trip"
+        app:layout_constraintTop_toBottomOf="@+id/textview_tag_start_address_choose_trip" />
+
+    <TextView
+        android:id="@+id/textview_tag_final_address_choose_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Destino final:"
+        app:layout_constraintStart_toStartOf="@id/textview_tag_start_address_choose_trip"
+        app:layout_constraintTop_toBottomOf="@id/textview_value_start_address_choose_trip" />
+
+    <TextView
+        android:id="@+id/textview_value_final_address_choose_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Av. XPTO Figueira, Jardim Paulista, 209"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/textview_tag_final_address_choose_trip"
+        app:layout_constraintTop_toBottomOf="@+id/textview_tag_final_address_choose_trip" />
+
+    <ImageView
+        android:id="@+id/imageview_map_choose_trip"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintStart_toStartOf="@id/textview_value_final_address_choose_trip"
+        app:layout_constraintTop_toBottomOf="@id/textview_value_final_address_choose_trip" />
+
+    <TextView
+        android:id="@+id/textview_title_driver_avaible_choose_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Motoristas disponiveis"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/imageview_map_choose_trip"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_map_choose_trip" />
+
+    <TextView
+        android:id="@+id/textview_subtitle_driver_avaible_choose_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecione abaixo um de nossos motoristas a qual deseja viajar."
+        app:layout_constraintStart_toStartOf="@id/textview_title_driver_avaible_choose_trip"
+        app:layout_constraintTop_toBottomOf="@id/textview_title_driver_avaible_choose_trip" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_choose_trip"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/textview_subtitle_driver_avaible_choose_trip"
+        app:layout_constraintTop_toBottomOf="@id/textview_subtitle_driver_avaible_choose_trip"
+        tools:listitem="@layout/driver_item_recycler_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
