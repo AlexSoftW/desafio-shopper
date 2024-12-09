@@ -29,10 +29,6 @@ class HostActivity : AppCompatActivity() {
             replaceFragmentManager(RequestTripFragment())
         }
 
-//        binding.includeBottomNavigation.imagebuttonChoose.setOnClickListener {
-//            replaceFragmentManager(ChooseTripFragment())
-//        }
-
         binding.includeBottomNavigation.imagebuttonHistory.setOnClickListener {
             replaceFragmentManager(HistoryTripFragment())
         }

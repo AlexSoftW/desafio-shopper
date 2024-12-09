@@ -1,9 +1,9 @@
 package com.application.desafio_shopper.model
 
-data class RouteResponse(
+data class Route(
     val origin: Location,
     val destination: Location,
-    val distance: Double,
+    val distance: Long,
     val duration: String,
     val options: List<Option>,
     val routeResponse: Any
@@ -31,4 +31,21 @@ data class Review(
 data class ErrorResponse(
     val error_code: String,
     val error_description: String
+)
+
+//data class request body.
+data class RequestRideEstimateBody(
+    val customer_id: String,
+    val origin: String,
+    val destination: String
+)
+
+data class RequestRideConfirmBody(
+    val customer_id: String,
+    val origin: String,
+    val destination: String,
+    val distance: Long,
+    val duration: String,
+    val driver: Driver,
+    val value: Double
 )

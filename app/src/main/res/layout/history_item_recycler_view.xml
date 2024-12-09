@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:elevation="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/textview_tag_name_history_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_value_name_history_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="João Barros da Silva"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_name_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_name_history_item" />
+
+        <TextView
+            android:id="@+id/textview_tag_start_address_history_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Origem"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_name_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_value_name_history_item" />
+
+        <TextView
+            android:id="@+id/textview_value_start_address_history_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Rua Teste dos Santos, Jardim Paulista, 1030"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_start_address_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_start_address_history_item" />
+
+        <TextView
+            android:id="@+id/textview_tag_final_address_history_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Destino"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_start_address_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_value_start_address_history_item" />
+
+        <TextView
+            android:id="@+id/textview_value_final_address_history_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Rua XPTO Figueira, Jardim Paulista, 209"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_final_address_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_final_address_history_item" />
+
+        <TextView
+            android:id="@+id/textview_tag_distance_history_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Distância"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_final_address_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_value_final_address_history_item" />
+
+        <TextView
+            android:id="@+id/textview_value_distance_history_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="23 km"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_distance_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_distance_history_item" />
+
+        <TextView
+            android:id="@+id/textview_tag_time_history_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tempo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textview_tag_distance_history_item"
+            app:layout_constraintTop_toTopOf="@+id/textview_tag_distance_history_item" />
+
+        <TextView
+            android:id="@+id/textview_value_time_history_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="1h e 41min"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_time_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_distance_history_item" />
+
+        <TextView
+            android:id="@+id/textview_date_history_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="09 de dez, 2024 - 12:31"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/textview_tag_time_history_item"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_distance_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_value_distance_history_item" />
+
+        <TextView
+            android:id="@+id/textview_tag_money_history_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R$"
+            app:layout_constraintStart_toEndOf="@id/textview_date_history_item"
+            app:layout_constraintTop_toTopOf="@id/textview_date_history_item" />
+
+        <TextView
+            android:id="@+id/textview_value_money_history_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="20.00"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_tag_money_history_item"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textview_tag_money_history_item"
+            app:layout_constraintTop_toTopOf="@+id/textview_tag_money_history_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
