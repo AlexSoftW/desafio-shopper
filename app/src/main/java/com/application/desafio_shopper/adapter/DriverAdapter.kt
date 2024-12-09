@@ -9,7 +9,7 @@ import com.application.desafio_shopper.model.Option
 
 class DriverAdapter(
     private var listDriver: List<Option>,
-    private val onItemClicked: () -> Unit
+    private val onItemClicked: (Option) -> Unit
 ) : RecyclerView.Adapter<DriverAdapter.DriverViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
@@ -43,7 +43,7 @@ class DriverAdapter(
             binding.textviewValueMoneyDriverItem.text = driver.value.toString()
             binding.textviewValueRatingDriverItem.text = driver.review.rating.toString()
             binding.buttonDriverItem.setOnClickListener {
-                onItemClicked()
+                onItemClicked(driver)
             }
         }
     }

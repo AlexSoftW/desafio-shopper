@@ -5,21 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
 import com.application.desafio_shopper.R
 import com.application.desafio_shopper.adapter.CarouselAdapter
 import com.application.desafio_shopper.databinding.RequestTripFragmentBinding
 import com.application.desafio_shopper.model.CarouselItem
+import com.application.desafio_shopper.viewmodel.ChooseTripViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RequestTripFragment : Fragment() {
     private lateinit var binding: RequestTripFragmentBinding
-    private var currentPage = 0
+    private val viewModel: ChooseTripViewModel by viewModel()
+
+    private var currentSlide = 0
     private var autoScrollJob: Job? = null
 
     override fun onCreateView(
@@ -29,6 +32,7 @@ class RequestTripFragment : Fragment() {
     ): View? {
         binding = RequestTripFragmentBinding.inflate(inflater, container, false)
         setupView()
+        setupObserver()
 
         return binding.root
     }
@@ -52,9 +56,24 @@ class RequestTripFragment : Fragment() {
         val adapter = CarouselAdapter(items)
         binding.viewpagerRequestTrip.adapter = adapter
         startAutoScroll()
+    }
 
+    private fun setupObserver() {
         binding.buttonRequestTrip.setOnClickListener {
-            fragmentReplaceManager(ChooseTripFragment())
+            val fragment = ChooseTripFragment()
+
+            val idUser = binding.edittextIdUserRequestTrip.text.toString()
+            val startAddress = binding.edittextStartAddressRequestTrip.text.toString()
+            val finalAddress = binding.edittextFinalAddressRequestTrip.text.toString()
+
+            val bundle = Bundle().apply {
+                putString("idUser", idUser)
+                putString("origin", startAddress)
+                putString("destination", finalAddress)
+            }
+
+            fragment.arguments = bundle
+            fragmentReplaceManager(fragment)
         }
     }
 
@@ -64,8 +83,8 @@ class RequestTripFragment : Fragment() {
             while (isActive) {
                 if (binding.viewpagerRequestTrip.adapter != null) {
                     val itemCount = binding.viewpagerRequestTrip.adapter!!.itemCount
-                    currentPage = (currentPage + 1) % itemCount
-                    binding.viewpagerRequestTrip.setCurrentItem(currentPage, true)
+                    currentSlide = (currentSlide + 1) % itemCount
+                    binding.viewpagerRequestTrip.setCurrentItem(currentSlide, true)
                 }
                 delay(5000)
             }
