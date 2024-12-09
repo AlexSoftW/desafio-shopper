@@ -7,7 +7,7 @@ android {
     namespace = "com.application.desafio_shopper"
     compileSdk = 34
 
-    viewBinding { 
+    viewBinding {
         enable = true
     }
 
@@ -17,7 +17,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
