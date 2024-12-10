@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.application.desafio_shopper.databinding.HistoryItemRecyclerViewBinding
 import com.application.desafio_shopper.model.Ride
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class HistoryAdapter(private var listRide: List<Ride>) :
     RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
@@ -33,14 +35,22 @@ class HistoryAdapter(private var listRide: List<Ride>) :
 
     inner class HistoryViewHolder(private val binding: HistoryItemRecyclerViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("DefaultLocale", "SetTextI18n")
         fun bind(ride: Ride) {
             binding.textviewValueNameHistoryItem.text = ride.driver.name
             binding.textviewValueStartAddressHistoryItem.text = ride.origin
             binding.textviewValueFinalAddressHistoryItem.text = ride.destination
-            binding.textviewValueDistanceHistoryItem.text = ride.distance.toString()
+            binding.textviewValueDistanceHistoryItem.text = "%.2f km".format(ride.distance)
             binding.textviewValueTimeHistoryItem.text = ride.duration
-            binding.textviewDateHistoryItem.text = ride.date.toString()
-            binding.textviewValueMoneyHistoryItem.text = ride.value.toString()
+            binding.textviewDateHistoryItem.text = formatDate(ride.date)
+            binding.textviewValueMoneyHistoryItem.text = "%.2f".format(ride.value)
+        }
+
+        private fun formatDate(date: String): String {
+            val inputFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
+            val dateTime = LocalDateTime.parse(date, inputFormatter)
+            val outputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm")
+            return dateTime.format(outputFormatter)
         }
     }
 }

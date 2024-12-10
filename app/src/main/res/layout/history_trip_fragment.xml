@@ -7,11 +7,14 @@
 
     <TextView
         android:id="@+id/textview_title_history_trip"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Histórico de viagens"
-        android:textSize="28sp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:text="@string/text_historico_de_viagens"
+        android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,7 +22,7 @@
         android:id="@+id/textview_tag_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Filtrar por:"
+        android:text="@string/text_filtrar_por"
         app:layout_constraintStart_toStartOf="@id/textview_title_history_trip"
         app:layout_constraintTop_toBottomOf="@+id/textview_title_history_trip" />
 
@@ -28,7 +31,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Informe o ID do passageiro"
+        android:hint="@string/text_id_do_passageiro"
         android:paddingEnd="8dp"
         app:layout_constraintEnd_toStartOf="@id/textfield_spinner_history_trip"
         app:layout_constraintHorizontal_weight="1"
@@ -47,10 +50,10 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Selecione o motorista"
+        android:hint="@string/text_selecione_o_motorista"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@id/textfield_id_user_history_trip"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/textview_title_history_trip"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@id/textfield_id_user_history_trip">
 
@@ -58,7 +61,8 @@
             android:id="@+id/filled_exposed_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none" />
+            android:inputType="none"
+            tools:ignore="LabelFor" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,8 +72,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#24AE7C"
-        android:text="Aplicar"
+        android:backgroundTint="@color/green"
+        android:text="@string/text_aplicar"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@id/textfield_spinner_history_trip"
         app:layout_constraintStart_toStartOf="@id/textfield_id_user_history_trip"

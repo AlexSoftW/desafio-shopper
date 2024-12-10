@@ -1,6 +1,7 @@
 package com.application.desafio_shopper.view
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.application.desafio_shopper.R
@@ -25,11 +26,15 @@ class HostActivity : AppCompatActivity() {
         val fragmentStart = RequestTripFragment()
         replaceFragmentManager(fragmentStart)
 
-        binding.includeBottomNavigation.imagebuttonHome.setOnClickListener {
+        binding.imagebuttonNotification.setOnClickListener {
+            Toast.makeText(this, "Você não possui nenhuma notificação", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.includeBottomNavigation.linearLayoutHomeNavigation.setOnClickListener {
             replaceFragmentManager(RequestTripFragment())
         }
 
-        binding.includeBottomNavigation.imagebuttonHistory.setOnClickListener {
+        binding.includeBottomNavigation.linearLayoutHistoryNavigation.setOnClickListener {
             replaceFragmentManager(HistoryTripFragment())
         }
     }
