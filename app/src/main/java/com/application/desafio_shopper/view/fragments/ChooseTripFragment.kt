@@ -1,5 +1,6 @@
 package com.application.desafio_shopper.view.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -46,8 +47,8 @@ class ChooseTripFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupObserver() {
-
         val driveAdapter = DriverAdapter(emptyList()) {
             viewModel.patchRideConfirm(
                 RequestRideConfirmBody(
@@ -68,6 +69,7 @@ class ChooseTripFragment : Fragment() {
         viewModel.routeResponse.observe(viewLifecycleOwner) {
             distance = it.distance
             duration = it.duration
+            binding.textviewQtdDriverAvaibleChooseTrip.text = it.options.size.toString()
         }
 
         viewModel.routeResponse.observe(viewLifecycleOwner) {
@@ -77,7 +79,7 @@ class ChooseTripFragment : Fragment() {
                     "&markers=color:blue|${it.destination.latitude},${it.destination.longitude}" +
                     "&path=color:0x0000ff|weight:5|${it.origin.latitude},${it.origin.longitude}|" +
                     "${it.destination.latitude},${it.destination.longitude}" +
-                    "&key=empty"
+                    "&key=AIzaSyCkLFTR2W7ubSgHnicZk7Ij8hInZzfhXCE"
 
             Glide.with(this).load(mapUrl).into(binding.imageviewMapChooseTrip)
         }

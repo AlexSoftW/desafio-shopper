@@ -1,3 +1,46 @@
 <resources>
     <string name="app_name">desafio-shopper</string>
+
+    <!--history item recycler-->
+    <string name="text_motorista">Motorista</string>
+    <string name="text_endereco_de_origem">Endereço de origem</string>
+    <string name="text_endereco_destino">Endereço de destino</string>
+    <string name="text_distancia">Distância</string>
+    <string name="text_tempo">Tempo</string>
+    <string name="text_cifrao">R$</string>
+
+    <!--bottom navigation-->
+    <string name="text_menu_inicial">Menu inicial</string>
+    <string name="text_historico">Histórico</string>
+
+    <!--choose trip fragment-->
+    <string name="text_ponto_de_partida">Ponto de partida:</string>
+    <string name="text_destino_final">Destino final:</string>
+    <string name="text_motoristas_disponiveis">Motoristas disponiveis:</string>
+
+    <!--driver item recycler-->
+    <string name="text_nome">Nome</string>
+    <string name="text_veiculo">Veículo</string>
+    <string name="text_descricao">Descrição</string>
+    <string name="text_avaliacao">Avaliação</string>
+    <string name="text_escolher">Escolher</string>
+
+    <!--history trip fragment-->
+    <string name="text_historico_de_viagens">Histórico de viagens</string>
+    <string name="text_filtrar_por">Filtrar por:</string>
+    <string name="text_id_do_passageiro">ID do passageiro</string>
+    <string name="text_selecione_o_motorista">Selecione o motorista</string>
+    <string name="text_aplicar">Aplicar</string>
+    <string-array name="driver_options">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <!--request trip fragment-->
+    <string name="text_ola_passageiro">Olá passageiro(a)</string>
+    <string name="text_para_onde_vamos">para onde vamos?</string>
+    <string name="text_informe_o_id_do_passageiro">Informe o ID do passageiro</string>
+    <string name="text_solicitar_viagem">Solicitar viagem</string>
+
 </resources>

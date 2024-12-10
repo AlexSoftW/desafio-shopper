@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="18dp"
-        android:text="Olá passageiro(a)"
+        android:text="@string/text_ola_passageiro"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +21,7 @@
         android:id="@+id/textview_subtitle_request_trip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="para onde vamos?"
+        android:text="@string/text_para_onde_vamos"
         app:layout_constraintStart_toStartOf="@id/textview_title_request_trip"
         app:layout_constraintTop_toBottomOf="@+id/textview_title_request_trip" />
 
@@ -29,7 +30,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Informe o ID do passageiro"
+        android:hint="@string/text_informe_o_id_do_passageiro"
         app:layout_constraintEnd_toEndOf="@id/textview_title_request_trip"
         app:layout_constraintStart_toStartOf="@id/textview_title_request_trip"
         app:layout_constraintTop_toBottomOf="@id/textview_subtitle_request_trip">
@@ -37,7 +38,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_id_user_request_trip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:ignore="VisualLintTextFieldSize"
+            android:text="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +48,7 @@
         android:id="@+id/textfield_start_address_request_trip"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Endereço de origem"
+        android:hint="@string/text_endereco_de_origem"
         app:layout_constraintEnd_toEndOf="@id/textfield_id_user_request_trip"
         app:layout_constraintStart_toStartOf="@id/textfield_id_user_request_trip"
         app:layout_constraintTop_toBottomOf="@id/textfield_id_user_request_trip">
@@ -53,7 +56,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_start_address_request_trip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:ignore="VisualLintTextFieldSize"
+            android:text="Av. Pres. Kenedy, 2385 - Remédios, Osasco - SP, 02675-031" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +66,7 @@
         android:id="@+id/textfield_final_address_request_trip"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Endereço de destino"
+        android:hint="@string/text_endereco_destino"
         app:layout_constraintEnd_toEndOf="@id/textfield_start_address_request_trip"
         app:layout_constraintStart_toStartOf="@id/textfield_start_address_request_trip"
         app:layout_constraintTop_toBottomOf="@id/textfield_start_address_request_trip">
@@ -69,7 +74,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_final_address_request_trip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:ignore="VisualLintTextFieldSize"
+            android:text="Av. Paulista, 1538 - Bela Vista, São Paulo - SP, 01310-200" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,30 +86,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#24AE7C"
-        android:text="Solicitar viajem"
+        android:backgroundTint="@color/green"
+        android:text="@string/text_solicitar_viagem"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@id/textfield_final_address_request_trip"
-        app:layout_constraintTop_toBottomOf="@id/textfield_final_address_request_trip" />
-
-    <TextView
-        android:id="@+id/textview_question_carousel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:text="Porque andar na Shopper driver?"
-        app:layout_constraintStart_toStartOf="@id/button_request_trip"
-        app:layout_constraintTop_toBottomOf="@id/button_request_trip" />
-
-    <View
-        android:id="@+id/view_line"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="#CECECE"
-        app:layout_constraintEnd_toEndOf="@id/textfield_final_address_request_trip"
-        app:layout_constraintStart_toStartOf="@id/textview_question_carousel"
-        app:layout_constraintTop_toBottomOf="@id/textview_question_carousel" />
+        app:layout_constraintTop_toBottomOf="@id/textfield_final_address_request_trip"
+        tools:ignore="TextContrastCheck" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager_request_trip"
@@ -112,6 +101,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_line" />
+        app:layout_constraintTop_toBottomOf="@id/button_request_trip" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
