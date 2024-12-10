@@ -28,7 +28,8 @@ class CarouselAdapter(private val carouselItems: List<CarouselItem>) :
     inner class CarouselViewHolder(private val binding: CarouselItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(carouselItem: CarouselItem) {
-            binding.textviewSubtitleCarousel.text = carouselItem.text
+            binding.textviewTitleCarousel.text = carouselItem.title
+            binding.textviewSubtitleCarousel.text = carouselItem.subtitle
 
             Glide.with(binding.imageviewCarousel.context)
                 .load(carouselItem.image)

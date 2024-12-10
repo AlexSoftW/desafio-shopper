@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
@@ -15,7 +16,8 @@
             android:id="@+id/textview_tag_name_driver_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome"
+            android:text="@string/text_nome"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,19 +25,19 @@
             android:id="@+id/textview_value_name_driver_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="João Barros da Silva"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/textview_tag_money_driver_item"
             app:layout_constraintStart_toStartOf="@id/textview_tag_name_driver_item"
-            app:layout_constraintTop_toBottomOf="@id/textview_tag_name_driver_item" />
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_name_driver_item"
+            tools:text="Homer Simpson" />
 
         <TextView
             android:id="@+id/textview_tag_vehicle_driver_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Veículo"
+            android:text="@string/text_veiculo"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/textview_tag_name_driver_item"
             app:layout_constraintTop_toBottomOf="@id/textview_value_name_driver_item" />
 
@@ -43,19 +45,19 @@
             android:id="@+id/textview_value_vehicle_driver_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Honda Civic prata"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/textview_tag_money_driver_item"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/button_driver_item"
             app:layout_constraintStart_toStartOf="@id/textview_tag_vehicle_driver_item"
-            app:layout_constraintTop_toBottomOf="@id/textview_tag_vehicle_driver_item" />
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_vehicle_driver_item"
+            tools:text="Honda Civic Prata" />
 
         <TextView
             android:id="@+id/textview_tag_description_driver_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Descrição"
+            android:text="@string/text_descricao"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/textview_tag_vehicle_driver_item"
             app:layout_constraintTop_toBottomOf="@id/textview_value_vehicle_driver_item" />
 
@@ -63,18 +65,17 @@
             android:id="@+id/textview_value_description_driver_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Lorem impsu.."
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/textview_tag_money_driver_item"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/button_driver_item"
             app:layout_constraintStart_toStartOf="@id/textview_tag_description_driver_item"
-            app:layout_constraintTop_toBottomOf="@id/textview_tag_description_driver_item" />
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_description_driver_item"
+            tools:text="Lorem impsu.." />
 
         <TextView
             android:id="@+id/textview_tag_money_driver_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="R$"
+            android:text="@string/text_cifrao"
             app:layout_constraintBottom_toBottomOf="@id/textview_value_money_driver_item"
             app:layout_constraintEnd_toStartOf="@id/textview_value_money_driver_item"
             app:layout_constraintTop_toTopOf="@+id/textview_value_money_driver_item" />
@@ -83,18 +84,19 @@
             android:id="@+id/textview_value_money_driver_item"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="20.00"
-            android:textSize="34sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="20.00" />
 
         <TextView
             android:id="@+id/textview_tag_rating_driver_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Avaliação"
+            android:text="@string/text_avaliacao"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/textview_value_money_driver_item"
             app:layout_constraintTop_toBottomOf="@id/textview_value_money_driver_item" />
 
@@ -102,11 +104,11 @@
             android:id="@+id/textview_value_rating_driver_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5 estrelas"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textSize="16sp"
+            app:drawableEndCompat="@drawable/ic_star_rating"
             app:layout_constraintEnd_toEndOf="@id/textview_tag_rating_driver_item"
-            app:layout_constraintTop_toBottomOf="@id/textview_tag_rating_driver_item" />
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_rating_driver_item"
+            tools:text="5" />
 
         <Button
             android:id="@+id/button_driver_item"
@@ -114,11 +116,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="#24AE7C"
-            android:text="Escolher"
+            android:backgroundTint="@color/green"
+            android:text="@string/text_escolher"
             android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_value_description_driver_item"
             app:layout_constraintEnd_toEndOf="@id/textview_tag_rating_driver_item"
-            app:layout_constraintTop_toBottomOf="@id/textview_value_rating_driver_item" />
+            app:layout_constraintTop_toBottomOf="@id/textview_value_rating_driver_item"
+            tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

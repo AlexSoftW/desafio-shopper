@@ -9,19 +9,15 @@ import com.application.desafio_shopper.R
 import com.application.desafio_shopper.adapter.CarouselAdapter
 import com.application.desafio_shopper.databinding.RequestTripFragmentBinding
 import com.application.desafio_shopper.model.CarouselItem
-import com.application.desafio_shopper.viewmodel.ChooseTripViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RequestTripFragment : Fragment() {
     private lateinit var binding: RequestTripFragmentBinding
-    private val viewModel: ChooseTripViewModel by viewModel()
-
     private var currentSlide = 0
     private var autoScrollJob: Job? = null
 
@@ -32,7 +28,6 @@ class RequestTripFragment : Fragment() {
     ): View? {
         binding = RequestTripFragmentBinding.inflate(inflater, container, false)
         setupView()
-        setupObserver()
 
         return binding.root
     }
@@ -41,24 +36,23 @@ class RequestTripFragment : Fragment() {
         val items = listOf(
             CarouselItem(
                 R.drawable.background1,
-                "1.Viaje tranquilamente com a Shopper Drive, economize \$ e tenha conforto e segurança em suas viagens"
+                "Conectando você ao melhor",
+                "Oferecemos praticidade e segurança para motoristas e passageiros, criando a experiência ideal em cada viagem."
             ),
             CarouselItem(
                 R.drawable.background2,
-                "2.Viaje tranquilamente com a Shopper Drive, economize \$ e tenha conforto e segurança em suas viagens"
+                "Viagem segura e confiável",
+                "Viaje com tranquilidade, preços acessíveis e uma experiência confortável em cada trajeto."
             ),
             CarouselItem(
                 R.drawable.background3,
-                "3.Viaje tranquilamente com a Shopper Drive, economize \$ e tenha conforto e segurança em suas viagens"
+                "Ganhe mais, dirija melhor",
+                "Com taxas competitivas, suporte 24 horas e liberdade para definir sua rotina, dirigir com a Shopper Driver nunca foi tão vantajoso!"
             ),
         )
-
         val adapter = CarouselAdapter(items)
-        binding.viewpagerRequestTrip.adapter = adapter
-        startAutoScroll()
-    }
 
-    private fun setupObserver() {
+        binding.viewpagerRequestTrip.adapter = adapter
         binding.buttonRequestTrip.setOnClickListener {
             val fragment = ChooseTripFragment()
 
@@ -75,6 +69,8 @@ class RequestTripFragment : Fragment() {
             fragment.arguments = bundle
             fragmentReplaceManager(fragment)
         }
+
+        startAutoScroll()
     }
 
     private fun startAutoScroll() {
