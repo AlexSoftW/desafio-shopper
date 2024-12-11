@@ -32,9 +32,10 @@
 
             <TextView
                 android:id="@+id/textview_value_origin_address_choose_trip"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/textview_tag_origin_address_choose_trip"
                 app:layout_constraintTop_toBottomOf="@+id/textview_tag_origin_address_choose_trip"
                 tools:ignore="VisualLintBounds"
@@ -53,9 +54,10 @@
 
             <TextView
                 android:id="@+id/textview_value_destination_address_choose_trip"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/textview_tag_destination_address_choose_trip"
                 app:layout_constraintTop_toBottomOf="@+id/textview_tag_destination_address_choose_trip"
                 tools:ignore="VisualLintBounds"
