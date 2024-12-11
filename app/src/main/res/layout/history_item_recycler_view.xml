@@ -31,7 +31,7 @@
             tools:text="João Barros da Silva" />
 
         <TextView
-            android:id="@+id/textview_tag_start_address_history_item"
+            android:id="@+id/textview_tag_origin_address_history_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -41,31 +41,31 @@
             app:layout_constraintTop_toBottomOf="@id/textview_value_name_history_item" />
 
         <TextView
-            android:id="@+id/textview_value_start_address_history_item"
+            android:id="@+id/textview_value_origin_address_history_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@id/textview_tag_start_address_history_item"
-            app:layout_constraintTop_toBottomOf="@id/textview_tag_start_address_history_item"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_origin_address_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_origin_address_history_item"
             tools:text="Av. Pres. Kenedy, 2385 - Remédios, Osasco - SP, 02675-031" />
 
         <TextView
-            android:id="@+id/textview_tag_final_address_history_item"
+            android:id="@+id/textview_tag_destination_address_history_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/text_endereco_destino"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/textview_tag_start_address_history_item"
-            app:layout_constraintTop_toBottomOf="@id/textview_value_start_address_history_item" />
+            app:layout_constraintStart_toStartOf="@id/textview_tag_origin_address_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_value_origin_address_history_item" />
 
         <TextView
-            android:id="@+id/textview_value_final_address_history_item"
+            android:id="@+id/textview_value_destination_address_history_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@id/textview_tag_final_address_history_item"
-            app:layout_constraintTop_toBottomOf="@id/textview_tag_final_address_history_item"
+            app:layout_constraintStart_toStartOf="@id/textview_tag_destination_address_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_tag_destination_address_history_item"
             tools:text="Av. Paulista, 1538 - Bela Vista, São Paulo - SP, 01310-200" />
 
         <TextView
@@ -75,8 +75,8 @@
             android:layout_marginTop="8dp"
             android:text="@string/text_distancia"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/textview_tag_final_address_history_item"
-            app:layout_constraintTop_toBottomOf="@id/textview_value_final_address_history_item" />
+            app:layout_constraintStart_toStartOf="@id/textview_tag_destination_address_history_item"
+            app:layout_constraintTop_toBottomOf="@id/textview_value_destination_address_history_item" />
 
         <TextView
             android:id="@+id/textview_value_distance_history_item"

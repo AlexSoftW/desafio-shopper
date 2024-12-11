@@ -9,15 +9,22 @@ import com.application.desafio_shopper.R
 import com.application.desafio_shopper.adapter.CarouselAdapter
 import com.application.desafio_shopper.databinding.RequestTripFragmentBinding
 import com.application.desafio_shopper.model.CarouselItem
+import com.application.desafio_shopper.viewmodel.ChooseTripViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RequestTripFragment : Fragment() {
     private lateinit var binding: RequestTripFragmentBinding
+    private val viewModel: ChooseTripViewModel by viewModel()
+
+    private lateinit var idCustomer: String
+    private lateinit var originAddress: String
+    private lateinit var destinationAddress: String
     private var currentSlide = 0
     private var autoScrollJob: Job? = null
 
@@ -27,7 +34,9 @@ class RequestTripFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = RequestTripFragmentBinding.inflate(inflater, container, false)
+
         setupView()
+        setupObserver()
 
         return binding.root
     }
@@ -54,23 +63,36 @@ class RequestTripFragment : Fragment() {
 
         binding.viewpagerRequestTrip.adapter = adapter
         binding.buttonRequestTrip.setOnClickListener {
+            idCustomer = binding.edittextIdUserRequestTrip.text.toString()
+            originAddress = binding.edittextOriginAddressRequestTrip.text.toString()
+            destinationAddress = binding.edittextDestinationAddressRequestTrip.text.toString()
+
+            viewModel.postRideEstimate(idCustomer, originAddress, destinationAddress)
+        }
+
+        startAutoScroll()
+    }
+
+    private fun setupObserver() {
+        viewModel.error.observe(viewLifecycleOwner) {
+            binding.textviewErrorRequestTrip.visibility = View.VISIBLE
+            binding.textviewErrorRequestTrip.text = it.error_description
+        }
+
+        viewModel.routeResponse.observe(viewLifecycleOwner) {
+            binding.textviewErrorRequestTrip.visibility = View.GONE
+
             val fragment = ChooseTripFragment()
 
-            val idUser = binding.edittextIdUserRequestTrip.text.toString()
-            val startAddress = binding.edittextStartAddressRequestTrip.text.toString()
-            val finalAddress = binding.edittextFinalAddressRequestTrip.text.toString()
-
             val bundle = Bundle().apply {
-                putString("idUser", idUser)
-                putString("origin", startAddress)
-                putString("destination", finalAddress)
+                putString("idUser", idCustomer)
+                putString("origin", originAddress)
+                putString("destination", destinationAddress)
             }
 
             fragment.arguments = bundle
             fragmentReplaceManager(fragment)
         }
-
-        startAutoScroll()
     }
 
     private fun startAutoScroll() {

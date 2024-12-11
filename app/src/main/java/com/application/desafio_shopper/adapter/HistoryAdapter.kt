@@ -38,8 +38,8 @@ class HistoryAdapter(private var listRide: List<Ride>) :
         @SuppressLint("DefaultLocale", "SetTextI18n")
         fun bind(ride: Ride) {
             binding.textviewValueNameHistoryItem.text = ride.driver.name
-            binding.textviewValueStartAddressHistoryItem.text = ride.origin
-            binding.textviewValueFinalAddressHistoryItem.text = ride.destination
+            binding.textviewValueOriginAddressHistoryItem.text = ride.origin
+            binding.textviewValueDestinationAddressHistoryItem.text = ride.destination
             binding.textviewValueDistanceHistoryItem.text = "%.2f km".format(ride.distance)
             binding.textviewValueTimeHistoryItem.text = ride.duration
             binding.textviewDateHistoryItem.text = formatDate(ride.date)

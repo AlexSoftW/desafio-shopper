@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textview_tag_start_address_choose_trip"
+                android:id="@+id/textview_tag_origin_address_choose_trip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
@@ -31,33 +31,33 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textview_value_start_address_choose_trip"
+                android:id="@+id/textview_value_origin_address_choose_trip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/textview_tag_start_address_choose_trip"
-                app:layout_constraintTop_toBottomOf="@+id/textview_tag_start_address_choose_trip"
+                app:layout_constraintStart_toStartOf="@id/textview_tag_origin_address_choose_trip"
+                app:layout_constraintTop_toBottomOf="@+id/textview_tag_origin_address_choose_trip"
                 tools:ignore="VisualLintBounds"
                 tools:text="Av. Pres. Kenedy, 2385 - Remédios, Osasco - SP, 02675-031" />
 
             <TextView
-                android:id="@+id/textview_tag_final_address_choose_trip"
+                android:id="@+id/textview_tag_destination_address_choose_trip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/text_destino_final"
                 android:textStyle="bold"
                 app:drawableStartCompat="@drawable/ic_end_location"
-                app:layout_constraintStart_toStartOf="@id/textview_tag_start_address_choose_trip"
-                app:layout_constraintTop_toBottomOf="@id/textview_value_start_address_choose_trip" />
+                app:layout_constraintStart_toStartOf="@id/textview_tag_origin_address_choose_trip"
+                app:layout_constraintTop_toBottomOf="@id/textview_value_origin_address_choose_trip" />
 
             <TextView
-                android:id="@+id/textview_value_final_address_choose_trip"
+                android:id="@+id/textview_value_destination_address_choose_trip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/textview_tag_final_address_choose_trip"
-                app:layout_constraintTop_toBottomOf="@+id/textview_tag_final_address_choose_trip"
+                app:layout_constraintStart_toStartOf="@id/textview_tag_destination_address_choose_trip"
+                app:layout_constraintTop_toBottomOf="@+id/textview_tag_destination_address_choose_trip"
                 tools:ignore="VisualLintBounds"
                 tools:text="Av. Paulista, 1538 - Bela Vista, São Paulo - SP, 01310-200" />
 
@@ -70,7 +70,7 @@
                 android:src="@drawable/ic_launcher_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_value_final_address_choose_trip"
+                app:layout_constraintTop_toBottomOf="@id/textview_value_destination_address_choose_trip"
                 tools:ignore="ContentDescription,ImageContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -78,7 +78,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/textview_qtd_driver_avaible_choose_trip"
+        android:id="@+id/textview_qtd_driver_available_choose_trip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
@@ -90,16 +90,27 @@
         tools:text="0" />
 
     <TextView
-        android:id="@+id/textview_title_driver_avaible_choose_trip"
+        android:id="@+id/textview_title_driver_available_choose_trip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="@string/text_motoristas_disponiveis"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textview_qtd_driver_avaible_choose_trip"
-        app:layout_constraintStart_toEndOf="@id/textview_qtd_driver_avaible_choose_trip"
-        app:layout_constraintTop_toTopOf="@+id/textview_qtd_driver_avaible_choose_trip" />
+        app:layout_constraintBottom_toBottomOf="@+id/textview_qtd_driver_available_choose_trip"
+        app:layout_constraintStart_toEndOf="@id/textview_qtd_driver_available_choose_trip"
+        app:layout_constraintTop_toTopOf="@+id/textview_qtd_driver_available_choose_trip" />
+
+    <TextView
+        android:id="@+id/textview_error_choose_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:visibility="gone"
+        app:drawableStartCompat="@drawable/ic_error"
+        app:layout_constraintStart_toStartOf="@+id/textview_qtd_driver_available_choose_trip"
+        app:layout_constraintTop_toBottomOf="@+id/textview_title_driver_available_choose_trip"
+        tools:text="Erro ao iniciar a corrida com este motorista" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_choose_trip"
@@ -109,7 +120,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_qtd_driver_avaible_choose_trip"
+        app:layout_constraintTop_toBottomOf="@id/textview_error_choose_trip"
         tools:listitem="@layout/driver_item_recycler_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
