@@ -31,11 +31,6 @@
     <string name="text_id_do_passageiro">ID do passageiro</string>
     <string name="text_selecione_o_motorista">Selecione o motorista</string>
     <string name="text_aplicar">Aplicar</string>
-    <string-array name="driver_options">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
 
     <!--request trip fragment-->
     <string name="text_ola_passageiro">Olá passageiro(a)</string>

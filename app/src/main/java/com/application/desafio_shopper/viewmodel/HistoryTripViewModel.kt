@@ -5,27 +5,42 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.application.desafio_shopper.model.Customer
+import com.application.desafio_shopper.model.ErrorResponse
 import com.application.desafio_shopper.repository.RetrofitRepository
+import com.google.gson.Gson
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 class HistoryTripViewModel : ViewModel() {
     private val repository = RetrofitRepository()
+    private val gson = Gson()
 
     private val _responseCustomerHistory = MutableLiveData<Customer>()
     val responseCustomerHistory: MutableLiveData<Customer> = _responseCustomerHistory
 
-    fun getCustomerHistory(idUser: String, idDriver: String) {
+    private val _error = MutableLiveData<ErrorResponse>()
+    val error: MutableLiveData<ErrorResponse> = _error
+
+    fun getCustomerHistory(idCustomer: String, idDriver: String) {
         viewModelScope.launch {
             try {
-                val response = repository.apiServiceTrip.GET_RIDE_CUSTOMER_AND_DRIVER(
-                    idUser,
+                val customerId = if (idCustomer.isBlank()) "0" else idCustomer
+                val response = repository.apiServiceTrip.getRideCustomerAndDriver(
+                    customerId,
                     idDriver
                 )
                 _responseCustomerHistory.value = response
-            } catch (e: Exception) {
-                Log.e("TAG_ERROR_CUSTOMER", "ERROR_GET_CUSTOMER_HISTORY: error $e")
+            } catch (e: HttpException) {
+                val errorBody = e.response()?.errorBody()?.string()
+                Log.e("TAG_HISTORY_TRIP_VIEWMODEL", "Erro recebido: $errorBody")
+
+                val errorResponse = gson.fromJson(errorBody, ErrorResponse::class.java)
+                _error.value = errorResponse
+                Log.e(
+                    "TAG_HISTORY_TRIP_VIEWMODEL",
+                    "Erro ao executar o método getCustomerHistory(): $e"
+                )
             }
         }
     }
-
 }

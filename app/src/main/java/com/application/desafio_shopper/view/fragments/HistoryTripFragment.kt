@@ -1,6 +1,7 @@
 package com.application.desafio_shopper.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,30 +23,49 @@ class HistoryTripFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = HistoryTripFragmentBinding.inflate(inflater, container, false)
+
+        setupView()
         setupObserver()
 
         return binding.root
     }
 
-    private fun setupObserver() {
-        val historyAdapter = HistoryAdapter(emptyList())
-
-        val driverOptionsAdapter = ArrayAdapter.createFromResource(
-            requireContext(),
-            R.array.driver_options,
-            android.R.layout.simple_dropdown_item_1line,
+    private fun setupView() {
+        val driverOptions = listOf(
+            Pair(1, "Homer Simpson"),
+            Pair(2, "Dominic Toretto"),
+            Pair(3, "James Bond")
         )
 
-        binding.buttonHistoryTrip.setOnClickListener {
-            viewModel.getCustomerHistory("CT01", "1")
-        }
+        val driverOptionsAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_dropdown_item_1line,
+            driverOptions.map { it.second }
+        )
 
         binding.filledExposedDropdown.setAdapter(driverOptionsAdapter)
 
-        viewModel.responseCustomerHistory.observe(viewLifecycleOwner) {
-            historyAdapter.updateRideList(it.rides)
+        binding.buttonHistoryTrip.setOnClickListener {
+            val selectedDriverName = binding.filledExposedDropdown.text.toString()
+            val idCustomer = binding.edittextIdUserHistoryTrip.text.toString()
+            val idDriver = driverOptions.firstOrNull { it.second == selectedDriverName }?.first
+            viewModel.getCustomerHistory(idCustomer, idDriver.toString())
         }
+    }
+
+    private fun setupObserver() {
+        val historyAdapter = HistoryAdapter(emptyList())
 
         binding.recyclerviewHistoryTrip.adapter = historyAdapter
+
+        viewModel.error.observe(viewLifecycleOwner) {
+            binding.textviewErrorHistoryTrip.visibility = View.VISIBLE
+            binding.textviewErrorHistoryTrip.text = it.error_description
+        }
+
+        viewModel.responseCustomerHistory.observe(viewLifecycleOwner) {
+            binding.textviewErrorHistoryTrip.visibility = View.GONE
+            historyAdapter.updateRideList(it.rides)
+        }
     }
 }
