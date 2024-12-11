@@ -45,13 +45,13 @@ class ChooseTripViewModel : ViewModel() {
                     )
                 )
                 _routeResponse.value = response
-                Log.i("RESPONSE_TESTE", "dados de resposta: $response")
+                Log.i("TAG_CHOOSE_TRIP_VIEWMODEL", "response: $response")
 
             } catch (e: HttpException) {
                 val errorBody = e.response()?.errorBody()?.string()
                 val errorResponse = gson.fromJson(errorBody, ErrorResponse::class.java)
                 _error.value = errorResponse
-                Log.e("ERROR_POST_RIDE_ESTIMATE", "error: ${errorResponse.error_description}")
+                Log.e("TAG_CHOOSE_TRIP_VIEWMODEL", "error: ${errorResponse.error_description}")
             }
         }
     }
@@ -61,12 +61,12 @@ class ChooseTripViewModel : ViewModel() {
             try {
                 val response = repository.apiServiceTrip.patchRideConfirm(body)
                 _driverAvailable.value = response
-                Log.i("TAG_PATCH_TESTE", "patchRideConfirm resposta: $response")
+                Log.i("TAG_CHOOSE_TRIP_VIEWMODEL", "response: $response")
             } catch (e: HttpException) {
                 val errorBody = e.response()?.errorBody()?.string()
                 val errorResponse = gson.fromJson(errorBody, ErrorResponse::class.java)
                 _error.value = errorResponse
-                Log.e("TAG_PATCH_TESTE", "patchRideConfirm ERRO: $e")
+                Log.e("TAG_CHOOSE_TRIP_VIEWMODEL", "error: $e")
             }
         }
     }

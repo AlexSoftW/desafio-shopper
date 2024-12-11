@@ -2,11 +2,11 @@ package com.application.desafio_shopper.view.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.application.desafio_shopper.MyApplication
 import com.application.desafio_shopper.R
 import com.application.desafio_shopper.adapter.DriverAdapter
 import com.application.desafio_shopper.databinding.ChooseTripFragmentBinding
@@ -79,9 +79,11 @@ class ChooseTripFragment : Fragment() {
                     "&markers=color:blue|${it.destination.latitude},${it.destination.longitude}" +
                     "&path=color:0x0000ff|weight:5|${it.origin.latitude},${it.origin.longitude}|" +
                     "${it.destination.latitude},${it.destination.longitude}" +
-                    "&key=AIzaSyCkLFTR2W7ubSgHnicZk7Ij8hInZzfhXCE"
+                    "&key=${MyApplication().googleApiKey}"
 
             Glide.with(this).load(mapUrl).into(binding.imageviewMapChooseTrip)
+            binding.imageviewMapChooseTrip.visibility = View.VISIBLE
+            binding.progressbarChooseTrip.visibility = View.GONE
         }
 
         viewModel.error.observe(viewLifecycleOwner) {

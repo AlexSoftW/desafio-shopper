@@ -68,10 +68,22 @@
                 android:layout_marginTop="8dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_background"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview_value_destination_address_choose_trip"
                 tools:ignore="ContentDescription,ImageContrastCheck" />
+
+            <ProgressBar
+                android:id="@+id/progressbar_choose_trip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:indeterminateTint="@color/green"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_value_destination_address_choose_trip" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -30,15 +30,17 @@ class HistoryTripViewModel : ViewModel() {
                     idDriver
                 )
                 _responseCustomerHistory.value = response
+                Log.i("TAG_HISTORY_TRIP_VIEWMODEL", "response: $response")
+
             } catch (e: HttpException) {
                 val errorBody = e.response()?.errorBody()?.string()
-                Log.e("TAG_HISTORY_TRIP_VIEWMODEL", "Erro recebido: $errorBody")
+                Log.e("TAG_HISTORY_TRIP_VIEWMODEL", "error: $errorBody")
 
                 val errorResponse = gson.fromJson(errorBody, ErrorResponse::class.java)
                 _error.value = errorResponse
                 Log.e(
                     "TAG_HISTORY_TRIP_VIEWMODEL",
-                    "Erro ao executar o método getCustomerHistory(): $e"
+                    "error: $e"
                 )
             }
         }
