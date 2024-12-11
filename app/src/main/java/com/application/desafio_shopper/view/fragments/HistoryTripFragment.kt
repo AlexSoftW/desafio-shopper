@@ -1,13 +1,11 @@
 package com.application.desafio_shopper.view.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
-import com.application.desafio_shopper.R
 import com.application.desafio_shopper.adapter.HistoryAdapter
 import com.application.desafio_shopper.databinding.HistoryTripFragmentBinding
 import com.application.desafio_shopper.viewmodel.HistoryTripViewModel
@@ -47,7 +45,7 @@ class HistoryTripFragment : Fragment() {
 
         binding.buttonHistoryTrip.setOnClickListener {
             val selectedDriverName = binding.filledExposedDropdown.text.toString()
-            val idCustomer = binding.edittextIdUserHistoryTrip.text.toString()
+            val idCustomer = binding.edittextIdUserHistoryTrip.text.toString().uppercase()
             val idDriver = driverOptions.firstOrNull { it.second == selectedDriverName }?.first
             viewModel.getCustomerHistory(idCustomer, idDriver.toString())
         }

@@ -9,9 +9,9 @@ import com.application.desafio_shopper.databinding.HostActivityBinding
 import com.application.desafio_shopper.view.fragments.HistoryTripFragment
 import com.application.desafio_shopper.view.fragments.RequestTripFragment
 
-private lateinit var binding: HostActivityBinding
-
 class HostActivity : AppCompatActivity() {
+    private lateinit var binding: HostActivityBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,7 +27,7 @@ class HostActivity : AppCompatActivity() {
         replaceFragmentManager(fragmentStart)
 
         binding.imagebuttonNotification.setOnClickListener {
-            Toast.makeText(this, "Você não possui nenhuma notificação", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Você não possuí nenhuma notificação", Toast.LENGTH_SHORT).show()
         }
 
         binding.includeBottomNavigation.linearLayoutHomeNavigation.setOnClickListener {

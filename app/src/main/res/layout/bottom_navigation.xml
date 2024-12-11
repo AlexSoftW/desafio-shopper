@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/black_100">
@@ -17,19 +16,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black_100"
-            android:src="@drawable/ic_home"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_menu_inicial"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:drawableTopCompat="@drawable/ic_home" />
 
     </LinearLayout>
 
@@ -44,19 +37,13 @@
         app:layout_constraintStart_toEndOf="@id/linear_layout_home_navigation"
         app:layout_constraintTop_toTopOf="@id/linear_layout_home_navigation">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/black_100"
-            android:src="@drawable/ic_history"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_historico"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:drawableTopCompat="@drawable/ic_history" />
 
     </LinearLayout>
 
