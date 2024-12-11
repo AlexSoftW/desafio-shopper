@@ -57,8 +57,8 @@
             android:id="@+id/edittext_origin_address_request_trip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Av. Pres. Kenedy, 2385 - Remédios, Osasco - SP, 02675-031"
-            tools:ignore="VisualLintTextFieldSize" />
+            tools:ignore="VisualLintTextFieldSize"
+            tools:text="Av. Pres. Kenedy, 2385 - Remédios, Osasco - SP, 02675-031" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,8 +75,8 @@
             android:id="@+id/edittext_destination_address_request_trip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Av. Paulista, 1538 - Bela Vista, São Paulo - SP, 01310-200"
-            tools:ignore="VisualLintTextFieldSize" />
+            tools:ignore="VisualLintTextFieldSize"
+            tools:text="Av. Paulista, 1538 - Bela Vista, São Paulo - SP, 01310-200" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

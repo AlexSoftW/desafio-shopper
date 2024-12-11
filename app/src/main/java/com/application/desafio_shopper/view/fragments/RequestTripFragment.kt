@@ -11,7 +11,9 @@ import com.application.desafio_shopper.databinding.RequestTripFragmentBinding
 import com.application.desafio_shopper.model.CarouselItem
 import com.application.desafio_shopper.viewmodel.ChooseTripViewModel
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -26,7 +28,7 @@ class RequestTripFragment : Fragment() {
     private lateinit var originAddress: String
     private lateinit var destinationAddress: String
     private var currentSlide = 0
-    private var autoScrollJob: Job? = null
+    private var job: Job? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +43,7 @@ class RequestTripFragment : Fragment() {
         return binding.root
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun setupView() {
         val items = listOf(
             CarouselItem(
@@ -63,11 +66,16 @@ class RequestTripFragment : Fragment() {
 
         binding.viewpagerRequestTrip.adapter = adapter
         binding.buttonRequestTrip.setOnClickListener {
-            idCustomer = binding.edittextIdUserRequestTrip.text.toString()
-            originAddress = binding.edittextOriginAddressRequestTrip.text.toString()
-            destinationAddress = binding.edittextDestinationAddressRequestTrip.text.toString()
+            job?.cancel()
+            job = GlobalScope.launch {
+                delay(500)
 
-            viewModel.postRideEstimate(idCustomer, originAddress, destinationAddress)
+                idCustomer = binding.edittextIdUserRequestTrip.text.toString()
+                originAddress = binding.edittextOriginAddressRequestTrip.text.toString()
+                destinationAddress = binding.edittextDestinationAddressRequestTrip.text.toString()
+
+                viewModel.postRideEstimate(idCustomer, originAddress, destinationAddress)
+            }
         }
 
         startAutoScroll()
@@ -96,7 +104,7 @@ class RequestTripFragment : Fragment() {
     }
 
     private fun startAutoScroll() {
-        autoScrollJob = CoroutineScope(Dispatchers.Main).launch {
+        job = CoroutineScope(Dispatchers.Main).launch {
             delay(5000)
             while (isActive) {
                 if (binding.viewpagerRequestTrip.adapter != null) {
