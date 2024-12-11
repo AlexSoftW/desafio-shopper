@@ -40,12 +40,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="VisualLintTextFieldSize"
-            android:text="1" />
+            tools:text="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textfield_start_address_request_trip"
+        android:id="@+id/textfield_origin_address_request_trip"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/text_endereco_de_origem"
@@ -54,43 +54,53 @@
         app:layout_constraintTop_toBottomOf="@id/textfield_id_user_request_trip">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edittext_start_address_request_trip"
+            android:id="@+id/edittext_origin_address_request_trip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="VisualLintTextFieldSize"
-            android:text="Av. Pres. Kenedy, 2385 - Remédios, Osasco - SP, 02675-031" />
+            android:text="Av. Pres. Kenedy, 2385 - Remédios, Osasco - SP, 02675-031"
+            tools:ignore="VisualLintTextFieldSize" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textfield_final_address_request_trip"
+        android:id="@+id/textfield_destination_address_request_trip"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/text_endereco_destino"
-        app:layout_constraintEnd_toEndOf="@id/textfield_start_address_request_trip"
-        app:layout_constraintStart_toStartOf="@id/textfield_start_address_request_trip"
-        app:layout_constraintTop_toBottomOf="@id/textfield_start_address_request_trip">
+        app:layout_constraintEnd_toEndOf="@id/textfield_origin_address_request_trip"
+        app:layout_constraintStart_toStartOf="@id/textfield_origin_address_request_trip"
+        app:layout_constraintTop_toBottomOf="@id/textfield_origin_address_request_trip">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edittext_final_address_request_trip"
+            android:id="@+id/edittext_destination_address_request_trip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="VisualLintTextFieldSize"
-            android:text="Av. Paulista, 1538 - Bela Vista, São Paulo - SP, 01310-200" />
+            android:text="Av. Paulista, 1538 - Bela Vista, São Paulo - SP, 01310-200"
+            tools:ignore="VisualLintTextFieldSize" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textview_error_request_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:visibility="gone"
+        app:drawableStartCompat="@drawable/ic_error"
+        app:layout_constraintStart_toStartOf="@id/textfield_destination_address_request_trip"
+        app:layout_constraintTop_toBottomOf="@id/textfield_destination_address_request_trip"
+        tools:text="Os campos são iguais" />
 
     <Button
         android:id="@+id/button_request_trip"
         style="@style/Widget.Material3.Button.ElevatedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:backgroundTint="@color/green"
         android:text="@string/text_solicitar_viagem"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@id/textfield_final_address_request_trip"
-        app:layout_constraintTop_toBottomOf="@id/textfield_final_address_request_trip"
+        app:layout_constraintStart_toStartOf="@id/textfield_destination_address_request_trip"
+        app:layout_constraintTop_toBottomOf="@id/textview_error_request_trip"
         tools:ignore="TextContrastCheck" />
 
     <androidx.viewpager2.widget.ViewPager2

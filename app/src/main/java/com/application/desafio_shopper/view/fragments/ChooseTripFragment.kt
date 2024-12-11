@@ -20,7 +20,7 @@ class ChooseTripFragment : Fragment() {
     private lateinit var binding: ChooseTripFragmentBinding
     private val viewModel: ChooseTripViewModel by viewModel()
 
-    private lateinit var idUser: String
+    private lateinit var idCustomer: String
     private lateinit var origin: String
     private lateinit var destination: String
     private var distance: Long = 0
@@ -33,26 +33,29 @@ class ChooseTripFragment : Fragment() {
     ): View? {
         binding = ChooseTripFragmentBinding.inflate(inflater, container, false)
 
-        idUser = arguments?.getString("idUser").toString()
-        origin = arguments?.getString("origin").toString()
-        destination = arguments?.getString("destination").toString()
-
-        Log.d("ChooseTripFragment", "Received origin: $origin, destination: $destination")
-
-        binding.textviewValueStartAddressChooseTrip.text = origin
-        binding.textviewValueFinalAddressChooseTrip.text = destination
-
+        setupView()
         setupObserver()
 
         return binding.root
     }
 
+    private fun setupView() {
+        idCustomer = arguments?.getString("idUser").toString()
+        origin = arguments?.getString("origin").toString()
+        destination = arguments?.getString("destination").toString()
+
+        binding.textviewValueOriginAddressChooseTrip.text = origin
+        binding.textviewValueDestinationAddressChooseTrip.text = destination
+    }
+
     @SuppressLint("SetTextI18n")
     private fun setupObserver() {
+        viewModel.postRideEstimate(idCustomer, origin, destination)
+
         val driveAdapter = DriverAdapter(emptyList()) {
             viewModel.patchRideConfirm(
                 RequestRideConfirmBody(
-                    idUser,
+                    idCustomer,
                     origin,
                     destination,
                     distance,
@@ -61,19 +64,16 @@ class ChooseTripFragment : Fragment() {
                     it.value
                 )
             )
-            fragmentReplaceManager(HistoryTripFragment())
         }
 
-        viewModel.postRideEstimate(idUser, origin, destination)
+        binding.recyclerviewChooseTrip.adapter = driveAdapter
 
         viewModel.routeResponse.observe(viewLifecycleOwner) {
+            driveAdapter.updateDriverList(it.options)
             distance = it.distance
             duration = it.duration
-            binding.textviewQtdDriverAvaibleChooseTrip.text = it.options.size.toString()
-        }
+            binding.textviewQtdDriverAvailableChooseTrip.text = it.options.size.toString()
 
-        viewModel.routeResponse.observe(viewLifecycleOwner) {
-            Log.d("ChooseTripFragment", "RouteResponse received: $it")
             val mapUrl = "https://maps.googleapis.com/maps/api/staticmap?size=400x200" +
                     "&markers=color:red|${it.origin.latitude},${it.origin.longitude}" +
                     "&markers=color:blue|${it.destination.latitude},${it.destination.longitude}" +
@@ -84,11 +84,15 @@ class ChooseTripFragment : Fragment() {
             Glide.with(this).load(mapUrl).into(binding.imageviewMapChooseTrip)
         }
 
-        viewModel.routeResponse.observe(viewLifecycleOwner, { driveList ->
-            driveAdapter.updateDriverList(driveList.options)
-        })
+        viewModel.error.observe(viewLifecycleOwner) {
+            binding.textviewErrorChooseTrip.visibility = View.VISIBLE
+            binding.textviewErrorChooseTrip.text = it.error_description
+        }
 
-        binding.recyclerviewChooseTrip.adapter = driveAdapter
+        viewModel.driverAvailable.observe(viewLifecycleOwner) {
+            binding.textviewErrorChooseTrip.visibility = View.GONE
+            fragmentReplaceManager(HistoryTripFragment())
+        }
     }
 
     private fun fragmentReplaceManager(fragment: Fragment) {

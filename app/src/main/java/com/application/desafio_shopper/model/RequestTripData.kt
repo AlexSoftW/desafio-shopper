@@ -28,6 +28,10 @@ data class Review(
     val comment: String
 )
 
+data class DriverAvailable(
+    val success: Boolean
+)
+
 data class ErrorResponse(
     val error_code: String,
     val error_description: String
@@ -35,9 +39,9 @@ data class ErrorResponse(
 
 //data class request body.
 data class RequestRideEstimateBody(
-    val customer_id: String,
-    val origin: String,
-    val destination: String
+    val customer_id: String?,
+    val origin: String?,
+    val destination: String?
 )
 
 data class RequestRideConfirmBody(
